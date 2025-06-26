@@ -1,5 +1,5 @@
 # Multi-stage build for optimized container size
-FROM python:3.11-slim as builder
+FROM python:3.13-slim as builder
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -20,7 +20,7 @@ RUN pdm install --prod --no-editable
 RUN pdm build
 
 # Production stage
-FROM python:3.11-slim as runtime
+FROM python:3.13-slim as runtime
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
